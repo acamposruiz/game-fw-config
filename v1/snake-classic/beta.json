@@ -9,7 +9,30 @@
         "flushOnPageHide": true
       },
       "blockedEvents": [],
-      "allowedEvents": null
+      "allowedEvents": [
+        "run.started",
+        "run.ended",
+        "play.session.summary",
+        "device.profile",
+        "$exception",
+        "error.handled",
+        "error.occurred",
+        "error.resource_failed",
+        "error.network",
+        "performance.degraded",
+        "remote.config.applied",
+        "remote.config.fetched",
+        "remote.config.rejected",
+        "paywall.shown",
+        "paywall.dismissed",
+        "paywall.purchase.started",
+        "paywall.purchase.completed",
+        "paywall.purchase.failed",
+        "paywall.purchase.cancelled",
+        "paywall.restore.started",
+        "paywall.restore.completed",
+        "paywall.restore.failed"
+      ]
     }
   }
 }
