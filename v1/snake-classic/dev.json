@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "analytics": {
     "posthog": {
-      "enabled": true,
+      "enabled": false,
       "batching": {
         "flushIntervalMs": 2000,
         "maxBatchSize": 1,
