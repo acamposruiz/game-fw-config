@@ -1,0 +1,70 @@
+name: Validate & purge remote-config
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'v1/**'
+      - 'schemas/**'
+      - 'scripts/**'
+      - 'package.json'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'v1/**'
+      - 'schemas/**'
+      - 'scripts/**'
+      - 'package.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm install
+
+      - name: Validate schemas
+        run: node scripts/validate.mjs
+
+  purge:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      # Ajusta si cambias el owner/nombre del repo.
+      REPO: acamposruiz/game-fw-config
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Purge jsDelivr cache
+        run: |
+          # Purga cada JSON de v1/ modificado en
+          # este push. La API de purge es publica.
+          CHANGED=$(git diff --name-only HEAD~1 HEAD \
+            -- 'v1/**/*.json' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "No JSON changes to purge."
+            exit 0
+          fi
+          for file in $CHANGED; do
+            URL="https://purge.jsdelivr.net/gh/${REPO}@main/${file}"
+            echo "Purging: $URL"
+            RESPONSE=$(curl -s -w "\n%{http_code}" "$URL")
+            HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+            BODY=$(echo "$RESPONSE" | sed '$d')
+            echo "Status: $HTTP_CODE"
+            echo "Body:   $BODY"
+            if [ "$HTTP_CODE" != "200" ]; then
+              echo "::warning::Purge failed for $file"
+            fi
+          done
+          echo "Purge done."

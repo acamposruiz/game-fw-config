@@ -1,0 +1,13 @@
+{
+  "name": "game-fw-config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remote config (analytics, feature flags) para juegos del framework. Servido via jsDelivr CDN.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

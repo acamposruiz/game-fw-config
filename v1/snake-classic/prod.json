@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "analytics": {
+    "posthog": {
+      "enabled": true,
+      "batching": {
+        "flushIntervalMs": 30000,
+        "maxBatchSize": 50,
+        "flushOnPageHide": true
+      },
+      "blockedEvents": [],
+      "allowedEvents": [
+        "run.started",
+        "run.ended",
+        "play.session.summary",
+        "device.profile",
+        "$exception",
+        "error.handled",
+        "error.occurred",
+        "error.resource_failed",
+        "error.network",
+        "performance.degraded",
+        "remote.config.applied",
+        "remote.config.fetched",
+        "remote.config.rejected"
+      ]
+    }
+  }
+}

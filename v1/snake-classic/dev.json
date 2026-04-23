@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "analytics": {
+    "posthog": {
+      "enabled": true,
+      "batching": {
+        "flushIntervalMs": 2000,
+        "maxBatchSize": 1,
+        "flushOnPageHide": true
+      },
+      "blockedEvents": [],
+      "allowedEvents": null
+    }
+  }
+}

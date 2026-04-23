@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://game-fw-config/snake-classic.schema.json",
+  "title": "Snake Classic — Remote analytics config",
+  "type": "object",
+  "required": ["schemaVersion"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "analytics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "posthog": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "batching": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "flushIntervalMs": {
+                  "type": "integer",
+                  "minimum": 1000,
+                  "maximum": 300000
+                },
+                "maxBatchSize": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 500
+                },
+                "flushOnPageHide": { "type": "boolean" }
+              }
+            },
+            "blockedEvents": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "allowedEvents": {
+              "oneOf": [
+                { "type": "null" },
+                {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
