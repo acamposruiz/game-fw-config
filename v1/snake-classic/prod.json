@@ -22,7 +22,16 @@
         "performance.degraded",
         "remote.config.applied",
         "remote.config.fetched",
-        "remote.config.rejected"
+        "remote.config.rejected",
+        "paywall.shown",
+        "paywall.dismissed",
+        "paywall.purchase.started",
+        "paywall.purchase.completed",
+        "paywall.purchase.failed",
+        "paywall.purchase.cancelled",
+        "paywall.restore.started",
+        "paywall.restore.completed",
+        "paywall.restore.failed"
       ]
     }
   }
