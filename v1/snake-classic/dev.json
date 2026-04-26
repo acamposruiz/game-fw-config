@@ -20,6 +20,7 @@
         "error.resource_failed",
         "error.network",
         "performance.degraded",
+        "locale.detection.mismatch",
         "remote.config.applied",
         "remote.config.fetched",
         "remote.config.rejected",
@@ -31,7 +32,8 @@
         "paywall.purchase.cancelled",
         "paywall.restore.started",
         "paywall.restore.completed",
-        "paywall.restore.failed"
+        "paywall.restore.failed",
+        "settings.changed"
       ]
     }
   }
