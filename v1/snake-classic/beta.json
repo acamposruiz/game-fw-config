@@ -33,7 +33,24 @@
         "paywall.restore.started",
         "paywall.restore.completed",
         "paywall.restore.failed",
-        "settings.changed"
+        "settings.changed",
+        "death.detail",
+        "level.started",
+        "level.completed",
+        "record.broken",
+        "progress.milestone",
+        "speed.increased",
+        "food.eaten",
+        "run.restarted",
+        "powerup.collected",
+        "powerup.expired",
+        "extra.life.used",
+        "auto.snake.session",
+        "crash.recovery.detected",
+        "crash.recovery.resumed",
+        "tutorial.dismissed",
+        "control.mode.chosen",
+        "orientation.chosen"
       ]
     }
   }
