@@ -101,11 +101,14 @@
         "signals": {
           "type": "object",
           "additionalProperties": false,
-          "description": "Senales activas. Los collectors hacen feature-detect por plataforma — pasar true no fuerza activacion en plataformas no soportadas (p.ej. longTasks/memory en iOS WKWebView).",
+          "description": "Senales activas. Los collectors hacen feature-detect por plataforma — pasar true no fuerza activacion en plataformas no soportadas (p.ej. longTasks/memory en iOS WKWebView). systems/entities/events requieren ademas que el juego declare gameSignalsConfig en su wiring (lista de sistemas, intervalos de polling, sampling rate de eventos).",
           "properties": {
             "fps": { "type": "boolean" },
             "longTasks": { "type": "boolean" },
-            "memory": { "type": "boolean" }
+            "memory": { "type": "boolean" },
+            "systems": { "type": "boolean" },
+            "entities": { "type": "boolean" },
+            "events": { "type": "boolean" }
           }
         },
         "thresholds": {

@@ -60,8 +60,11 @@
     "cohortPercent": 100,
     "signals": {
       "fps": true,
-      "longTasks": false,
-      "memory": false
+      "longTasks": true,
+      "memory": true,
+      "systems": true,
+      "entities": true,
+      "events": true
     }
   }
 }
