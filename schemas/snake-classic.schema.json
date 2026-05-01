@@ -49,6 +49,97 @@
           }
         }
       }
+    },
+    "paywall": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "freeEpisodeLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99
+        },
+        "triggers": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["episodeIndex", "beforeSceneIndex"],
+            "properties": {
+              "episodeIndex": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 99
+              },
+              "beforeSceneIndex": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 99
+              }
+            }
+          }
+        }
+      }
+    },
+    "profiling": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Subarbol opcional para controlar el modulo de profiling en produccion. Documentacion: docs/platform/profiling-production-config.md.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Kill-switch global. Si false, ningun dispositivo activa los collectors aunque la cohorte le incluya."
+        },
+        "cohortPercent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Porcentaje del parque que participa. Determinista por hash FNV-1a del anonymousId."
+        },
+        "signals": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Senales activas. Los collectors hacen feature-detect por plataforma — pasar true no fuerza activacion en plataformas no soportadas (p.ej. longTasks/memory en iOS WKWebView).",
+          "properties": {
+            "fps": { "type": "boolean" },
+            "longTasks": { "type": "boolean" },
+            "memory": { "type": "boolean" }
+          }
+        },
+        "thresholds": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Override remoto de thresholds. Permite calibrar empiricamente sin redeploy.",
+          "properties": {
+            "frameMs": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "warn": { "type": "number", "minimum": 4, "maximum": 200 },
+                "critical": { "type": "number", "minimum": 4, "maximum": 200 }
+              }
+            },
+            "longTaskMs": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "warn": { "type": "number", "minimum": 16, "maximum": 500 },
+                "critical": { "type": "number", "minimum": 16, "maximum": 500 }
+              }
+            },
+            "memoryGrowthMb": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "warn": { "type": "number", "minimum": 1, "maximum": 100 },
+                "critical": { "type": "number", "minimum": 1, "maximum": 100 }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

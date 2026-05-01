@@ -50,8 +50,18 @@
         "crash.recovery.resumed",
         "tutorial.dismissed",
         "control.mode.chosen",
-        "orientation.chosen"
+        "orientation.chosen",
+        "profiling.hotspot"
       ]
+    }
+  },
+  "profiling": {
+    "enabled": true,
+    "cohortPercent": 1,
+    "signals": {
+      "fps": true,
+      "longTasks": false,
+      "memory": false
     }
   }
 }
