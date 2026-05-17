@@ -55,6 +55,30 @@
       ]
     }
   },
+  "paywall": {
+    "enabled": false,
+    "triggers": [
+      {
+        "episodeIndex": 1,
+        "beforeSceneIndex": 1
+      }
+    ],
+    "freeEpisodeLimit": 2
+  },
+  "freewall": {
+    "enabled": true,
+    "triggers": [
+      {
+        "episodeIndex": 1,
+        "beforeSceneIndex": 1
+      }
+    ],
+    "frequency": {
+      "mode": "cooldown",
+      "cooldownDays": 7
+    },
+    "overrides": {}
+  },
   "profiling": {
     "enabled": true,
     "cohortPercent": 100,
