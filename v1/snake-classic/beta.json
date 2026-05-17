@@ -68,7 +68,7 @@
     "freeEpisodeLimit": 2
   },
   "freewall": {
-    "enabled": true,
+    "enabled": false,
     "triggers": [
       {
         "episodeIndex": 1,
@@ -79,7 +79,17 @@
       "mode": "cooldown",
       "cooldownDays": 7
     },
-    "overrides": {}
+    "overrides": {
+      "ios": {
+        "enabled": true
+      },
+      "android": {
+        "enabled": true
+      },
+      "electron-mac-appstore": {
+        "enabled": true
+      }
+    }
   },
   "profiling": {
     "enabled": true,
